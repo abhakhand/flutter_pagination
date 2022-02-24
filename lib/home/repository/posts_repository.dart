@@ -15,12 +15,9 @@ class PostsRepository {
 
     if (response.statusCode == 200) {
       final body = json.decode(response.body) as List;
+
       return body.map((dynamic json) {
-        return Post(
-          id: json['id'] as int,
-          title: json['title'] as String,
-          body: json['body'] as String,
-        );
+        return Post.fromJson(json);
       }).toList();
     }
 
